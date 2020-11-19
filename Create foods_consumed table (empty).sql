@@ -1,3 +1,7 @@
+use keto_tracker;
+
+DROP TABLE IF EXISTS foods_consumed;
+
 CREATE TABLE foods_consumed
 (
 primary_key INT NOT NULL AUTO_INCREMENT,
@@ -10,5 +14,3 @@ protein DECIMAL(5,2),
 time_consumed DATETIME,
 PRIMARY KEY (primary_key)
 );
-
-
