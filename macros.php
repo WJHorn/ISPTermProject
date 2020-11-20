@@ -56,17 +56,18 @@
    <div class = "totalCals">
       <br>
       <p> Total Calories Needed: </p>
-      <p id = "finalCals"></p>
+      <input type = "text" id = "finalCals"></input>
    </div>
-   <form method = "post" action = "localhost/isp/TermProj/macros.php">
+   <form method = "post" action = "http://localhost/isp/prj/macros.php">
       <div class = "macros">
          <br>
          <p>Net Carbs Needed:</p>
-         <input type = "text" id = "netCarbs"></input>
+         <input type = "text" name = "netCarbs" id = "netCarbs"></input>
          <p>Total Fats Needed:</p>
-         <input type = "text" id = "fats"></input>
+         <input type = "text" name = "fats" id = "fats"></input>
          <p>Total Protein Needed:</p>
-         <input type = "text" id = "proteins"></input>
+         <input type = "text" name = "proteins" id = "proteins"></input>
+         <br><br><input type = "submit" value = "Save Macros"></input>
       </div>
    </form>
    <script type = "text/javascript">
@@ -114,17 +115,43 @@
          var FinalProtein = parseInt(protein / 4);
          
          //print macros on page
-         document.getElementById("finalCals").innerHTML = FinalCals;
+         document.getElementById("finalCals").value = parseInt(FinalCals);
          document.getElementById("netCarbs").value = FinalCarbs;
          document.getElementById("fats").value = FinalFats;
          document.getElementById("proteins").value = FinalProtein;
       }
    </script>
-
-   
    <?php
       //read printed macros
+      $netCarbs = $_POST['netCarbs'] ?? '';
+      $fats = $_POST['fats'] ?? '';
+      $proteins = $_POST['proteins'] ?? '';
+      
       //store macros in macro table
+      $db = mysqli_connect("localhost", "root", "");
+      if (!$db) {
+         print "Error - Could not connect to MySQL";
+         exit;
+      }
+      $er = mysqli_select_db($db,"keto_tracker");
+      if (!$er) {
+         print "Error - Could not select the database";
+         exit;
+      }
+      $query = "";
+      if ($netCarbs != '' && $fats != '' && $proteins != '') {
+         $query = "insert into macroVars (NetCarbs, Fats, Proteins) values('$netCarbs', '$fats', '$proteins')";
+      }
+      if ($query != "") {
+         trim($query);
+         
+         $result = mysqli_query($db, $query);
+         if (!$result) {
+            print "Error - the query could not be executed";
+            $error = mysqli_error($db);
+            print "<p>" . $error . "</p>";
+         }
+      }
    ?>
 </body>
 </html>
