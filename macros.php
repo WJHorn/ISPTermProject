@@ -17,8 +17,7 @@
 	</div>
 </header>
 <body>
-   <form action = "http://localhost/isp/TermProj/macros.php"
-         method = "post">
+   
       <h2> Calculate my Macros </h2>
       <div class = "input">
          <table>
@@ -27,96 +26,73 @@
                <th> Gender: </th>
                <th> Height: </th>
                <th> Weight: </th>
+               <th> Activity Level (in Days/Week): </th>
             </tr>
             <tr>
-               <td><input type = "text" name = "age" size = "3" value = "24"></td>
+               <td><input type = "text" id = "age" size = "3" value = "24"></td>
                <td>
                   <p>
-                  <input type = "radio" name = "gender" value = "male" checked = "checked" >M
-                  <input type = "radio" name = "gender" value = "female" >F
+                  <input type = "radio" name = "gender" id = "gender" value = "1" checked = "checked" >M
+                  <input type = "radio" name = "gender" id = "gender" value = "2" >F
                   </p>
                </td>
-               <td><input type = "text" name = "height" size = "3" value = "6.0" ></td>
-               <td><input type = "text" name = "weight" size = "3" value = "200" ></td>
+               <td><input type = "text" id = "height" size = "3" value = "6.0" ></td>
+               <td><input type = "text" id = "weight" size = "3" value = "200" ></td>
+               <td>
+                  <p>
+                  <input type = "radio" name = "activity" id = "activity" value = "1.2" checked = "checked" >0
+                  <input type = "radio" name = "activity" id = "activity" value = "1.375" >1-3
+                  <input type = "radio" name = "activity" id = "activity" value = "1.55" >3-5
+                  <input type = "radio" name = "activity" id = "activity" value = "1.725" >6-7
+                  </p>
+               </td>
             </tr>
             <tr>
-               <td colspan = "4" align = "center"><input type = "submit" name = "macros" value = "Calculate my Macros"></td>
+               <td colspan = "5" align = "center">
+                  <button onclick="macroCalc()">Calculate my Macros</button>
+               </td>
             </tr>
          </table>
       </div>
-   </form>
-      <?php
-      //get input data
-         if(isset($_POST['macros'])) {
-            $age = $_POST['age'];
-            if ($_POST['gender'] == "male") {
-               $gender = "M";
-            }
-            else if ($_POST['gender'] == "female") {
-               $gender = "F";
-            }
-            else {
-               $gender = "N";
-            }
-            $height = $_POST['height'];
-            $weight = $_POST['weight'] ;
+      <div>
+         <p> Total Calories Needed: </p>
+         <p id = "output"></p>
+      </div>
+
+   <script type = "text/javascript">
+      function macroCalc(){
+         //read in the values entered by the user.
+         double age = document.getElementById("age").value;
+         alert(document.getElementById("age").value);
+         boolean isMale;
+         int gender = document.getElementById("gender").value;
+         if (gender == 1) {
+            isMale = true;
          }
          else {
-            $age = 0;
-            $gender = 'N';
-            $height = '0.0';
-            $weight = 0;
-            $query = "";
-            
+            isMale = false;
          }
-         $db = mysqli_connect("localhost", "root", "");
-         if (!$db) {
-            print "Error - Could not connect to MySQL";
-            exit;
-         }
+         double height = document.getElementById("height").value;
+         double weight = document.getElementById("weight").value;
+         double activity = document.getElementById("activity").value;
          
-         $er = mysqli_select_db($db, "keto_tracker");
-         if(!$er) {
-            print "Error - Could not select the database";
-            exit;
-         }
-         
-         if(strcmp($gender,'M') == 0) {
-            echo "<div id = 'gender'>Male</div>";
-            $query = "insert into macroVars(Age, Gender, Height, Weight) values('$age', '$gender', '$height', '$weight')";
-         }
-         else if (strcmp($gender,'F') == 0) {
-            echo "<div id = 'gender'>Female</div>";
-            $query = "insert into macroVars(Age, Gender, Height, Weight) values('$age', '$gender', '$height', '$weight')";
+         //use algorithm to find macros
+         double Bmr;
+         if (isMale) {
+            Bmr = 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
          }
          else {
-            echo "<div id = 'gender'>n/a</div>";
+            Bmr = 65 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
          }
+         double FinalCals = Bmr * activity;
          
-         
-         
-         if ($query != "") {
-            $result = mysqli_query($db, $query);
-            if (!$result) {
-               print "Error - the query could not be executed";
-               $error = mysqli_error($db);
-               print "<p>" . $error . "</p>";
-            }
-         }
-      ?>
-      <script type = "text/javascript">
-         if (document.getElementById("gender") == 'Male'){
-            maleCalc();
-         }
-         else if (){
-            
-         }
-         function maleCalc(){
-            <?php echo "Male Funtion"?>
-         }
-         function femaleCalc(){
-            
-         }
-      </script>
+         //print macros on page
+         document.getElementById("output").innerHTML = FinalCals;
+      }
+   </script>
+   <?php
+      //read printed macros
+      //store macros in macro table
+   ?>
 </body>
 </html>
