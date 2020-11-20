@@ -11,34 +11,120 @@
    <div class="menu">
       <nav>
          <li><a href="prj.html"> HOME </a></li>
-			<li><a href="macros.html"> CALCULATE MACROS </a></li>
+			<li><a href="macros.php"> CALCULATE MACROS </a></li>
 			<li><a> OTHER </a></li>			
 		</nav>
 	</div>
 </header>
 <body>
-   <form action = "http://localhost/isp/TermProj/macros.php"
-         method = "post">
-      <h2> Calculate my Macros </h2>
-      <div class = "input">
-         <table>
-            <tr>
-               <th> Age: </th>
-               <th> Gender: </th>
-               <th> Height: </th>
-               <th> Weight: </th>
-            </tr>
-            <tr>
-               <td><input type = "text" name = "age" size = "3" placeholder = "24" ></td>
-               <td><input type = "text" name = "gender" size = "3" placeholder = "M" ></td>
-               <td><input type = "text" name = "height" size = "3" placeholder = "6.0" ></td>
-               <td><input type = "text" name = "weight" size = "3" placeholder = "200" ></td>
-            </tr>
-            <tr>
-               <td colspan = "4" align = "center"><input type = "submit" value = "Calculate my Macros"></td>
-            </tr>
-         </table>
+   <h2> Calculate my Macros </h2>
+   <div class = "input">
+      <table>
+         <tr>
+            <th> Age: </th>
+            <th> Gender: </th>
+            <th> Height: </th>
+            <th> Weight: </th>
+            <th> Activity Level (in Days/Week): </th>
+         </tr>
+         <tr>
+            <td><input type = "number" id = "age" value = "24"></td>
+            <td>
+               <p>
+               <input type = "radio" name = "gender" id = "genderM" value = "1" checked = "checked" >M
+               <input type = "radio" name = "gender" id = "genderF" value = "2" >F
+               </p>
+            </td>
+            <td><input type = "number" id = "height" value = "6.0" ></td>
+            <td><input type = "number" id = "weight" value = "200" ></td>
+            <td>
+               <p>
+               <input type = "radio" name = "activity" id = "activity1" value = "1.2" checked = "checked" >0
+               <input type = "radio" name = "activity" id = "activity2" value = "1.375" >1-3
+               <input type = "radio" name = "activity" id = "activity3" value = "1.55" >3-5
+               <input type = "radio" name = "activity" id = "activity4" value = "1.725" >6-7
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td colspan = "5" align = "center">
+               <button onclick="macroCalc()">Calculate my Macros</button>
+            </td>
+         </tr>
+      </table>
+   </div>
+   <div class = "totalCals">
+      <br>
+      <p> Total Calories Needed: </p>
+      <p id = "finalCals"></p>
+   </div>
+   <form method = "post" action = "localhost/isp/TermProj/macros.php">
+      <div class = "macros">
+         <br>
+         <p>Net Carbs Needed:</p>
+         <input type = "text" id = "netCarbs"></input>
+         <p>Total Fats Needed:</p>
+         <input type = "text" id = "fats"></input>
+         <p>Total Protein Needed:</p>
+         <input type = "text" id = "proteins"></input>
       </div>
    </form>
+   <script type = "text/javascript">
+      function macroCalc(){
+         //read in the values entered by the user.
+         var age = document.getElementById("age").value;
+         var isMale;
+         if (document.getElementById("genderM").checked) {
+            isMale = true;
+         }
+         else if (document.getElementById("genderF").checked) {
+            isMale = false;
+         }
+         var height = document.getElementById("height").value;
+         var weight = document.getElementById("weight").value;
+         var activity;
+         if (document.getElementById("activity1").checked) {
+            activity = document.getElementById("activity1").value;
+         }
+         else if (document.getElementById("activity2").checked) {
+            activity = document.getElementById("activity2").value;
+         }
+         else if (document.getElementById("activity3").checked) {
+            activity = document.getElementById("activity3").value;
+         }
+         else if (document.getElementById("activity4").checked) {
+            activity = document.getElementById("activity4").value;
+         }
+         
+         //use algorithm to find macros
+         var Bmr;
+         if (isMale) {
+            Bmr = 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
+         }
+         else {
+            Bmr = 65 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
+         }
+         var FinalCals = Bmr * activity;
+         var carbs = 0.05 * FinalCals;
+         var fat = 0.25 * FinalCals;
+         var protein = 0.7 * FinalCals;
+         
+         var FinalCarbs = parseInt(carbs / 4);
+         var FinalFats = parseInt(fat / 9);
+         var FinalProtein = parseInt(protein / 4);
+         
+         //print macros on page
+         document.getElementById("finalCals").innerHTML = FinalCals;
+         document.getElementById("netCarbs").value = FinalCarbs;
+         document.getElementById("fats").value = FinalFats;
+         document.getElementById("proteins").value = FinalProtein;
+      }
+   </script>
+
+   
+   <?php
+      //read printed macros
+      //store macros in macro table
+   ?>
 </body>
 </html>

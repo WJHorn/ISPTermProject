@@ -1,4 +1,20 @@
 <html>
+<head>
+   <title> Keto Tracker </title>
+   <style type = "text/css">
+   td, th, table {border: thin solid black}
+   </style>
+   <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<header>
+   <div class="menu">
+      <nav>
+         <li><a href="prj.html"> HOME </a></li>
+			<li><a href="macros.html"> CALCULATE MACROS </a></li>
+			<li><a> OTHER </a></li>			
+		</nav>
+	</div>
+</header>
 <body>
 <?php
 //Establish the connection with PHP database - some code may be redundant
@@ -58,7 +74,7 @@ if ($result = $mysqli->query($query)) {
 </form>
 
 <!--This is a button to take the user back to the main interface-->
-<button onclick="document.location='main_interface.php'">Return to Enter Foods</button><br><br>
+<button onclick="document.location='prj.php'">Return to Enter Foods</button><br><br>
 
 <h2>Log of Today's Food Entries</h2>
 </body>

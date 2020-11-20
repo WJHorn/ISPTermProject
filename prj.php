@@ -10,7 +10,7 @@
    <div class="menu">
       <nav>
          <li><a href="prj.html"> HOME </a></li>
-			<li><a href="macros.html"> CALCULATE MACROS </a></li>
+			<li><a href="macros.php"> CALCULATE MACROS </a></li>
 			<li><a> OTHER </a></li>			
 		</nav>
 	</div>

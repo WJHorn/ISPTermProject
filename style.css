@@ -44,16 +44,20 @@
 
 .input table
 {
+   padding: 10px;
    background: rgba(0, 0, 0, 0.5);
+   color: white;
 }
 
 body
 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(background.jpg);
+   color: black;
+	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("background.jpg");
 	height: 100vh;
-	background-size: cover;
-	background-position: center;
+	background-size: initial;
+   background-repeat: repeat;
+	background-position: left;
 	cursor: pointer;
 }
 

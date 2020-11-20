@@ -5,9 +5,8 @@ DROP TABLE IF EXISTS macroVars;
 CREATE TABLE macroVars
 (
 primary_key INT NOT NULL AUTO_INCREMENT,
-Age INT(3),
-Gender CHAR(1),
-Height DECIMAL(3,2),
-Weight INT(3),
+NetCarbs DECIMAL(5,2),
+Fats DECIMAL(5,2),
+Proteins DECIMAL(5,2),
 PRIMARY KEY (primary_key)
 );
