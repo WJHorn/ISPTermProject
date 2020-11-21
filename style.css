@@ -49,6 +49,131 @@
    color: white;
 }
 
+.descript
+{
+   margin: auto;
+   width: 60%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+   font-size: 15px;
+}
+
+.arch
+{
+   margin: auto;
+   width: 70%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+}
+
+.arch t
+{
+   margin: auto;
+   border: 2px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 2px;
+   font-weight: bold;
+}
+
+.arch p
+{
+   padding: 2px;
+}
+
+.buisLog
+{
+   margin: auto;
+   width: 70%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+}
+
+.buisLog t
+{
+   margin: auto;
+   border: 2px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 2px;
+   font-weight: bold;
+}
+
+.buisLog p
+{
+   padding: 2px;
+}
+
+.databaseDes
+{
+   margin: auto;
+   width: 70%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+}
+
+.databaseDes t
+{
+   margin: auto;
+   border: 2px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 2px;
+   font-weight: bold;
+}
+
+.databaseDes p
+{
+   padding: 2px;
+}
+
+.specFeat
+{
+   margin: auto;
+   width: 70%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+}
+
+.specFeat t
+{
+   margin: auto;
+   border: 2px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 2px;
+   font-weight: bold;
+}
+
+.specFeat p
+{
+   padding: 2px;
+}
+
+.teamMems
+{
+   margin: auto;
+   width: 70%;
+   border: 3px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 10px;
+}
+
+.teamMems t
+{
+   margin: auto;
+   border: 2px solid #000000;
+   background: rgba(0, 0, 0, 0.25);
+   padding: 2px;
+   font-weight: bold;
+}
+
+.teamMems p
+{
+   padding: 2px;
+}
+
 body
 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
