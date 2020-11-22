@@ -42,6 +42,40 @@
 	background: rgba(130, 22, 237, 0.5);
 }
 
+.container
+{
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.macro
+{
+   width: 250px;
+   float: center;
+   height: auto;
+   padding: 10px;
+   background: rgba(0, 0, 0, 0.25);
+   border: 3px solid #000000;
+   text-align: center;
+   display: inline-block;
+}
+
+.button
+{
+   background-color: #000000;
+   color: white;
+   padding: 15px;
+   text-align: center;
+   display: block;
+   margin: auto;
+   width: 30%;
+   font-size: 16px;
+   cursor: pointer;
+}
+
 .input table
 {
    padding: 10px;
@@ -59,7 +93,7 @@
    font-size: 15px;
 }
 
-.arch
+.block
 {
    margin: auto;
    width: 70%;
@@ -68,7 +102,7 @@
    padding: 10px;
 }
 
-.arch t
+.block t
 {
    margin: auto;
    border: 2px solid #000000;
@@ -77,99 +111,7 @@
    font-weight: bold;
 }
 
-.arch p
-{
-   padding: 2px;
-}
-
-.buisLog
-{
-   margin: auto;
-   width: 70%;
-   border: 3px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 10px;
-}
-
-.buisLog t
-{
-   margin: auto;
-   border: 2px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 2px;
-   font-weight: bold;
-}
-
-.buisLog p
-{
-   padding: 2px;
-}
-
-.databaseDes
-{
-   margin: auto;
-   width: 70%;
-   border: 3px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 10px;
-}
-
-.databaseDes t
-{
-   margin: auto;
-   border: 2px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 2px;
-   font-weight: bold;
-}
-
-.databaseDes p
-{
-   padding: 2px;
-}
-
-.specFeat
-{
-   margin: auto;
-   width: 70%;
-   border: 3px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 10px;
-}
-
-.specFeat t
-{
-   margin: auto;
-   border: 2px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 2px;
-   font-weight: bold;
-}
-
-.specFeat p
-{
-   padding: 2px;
-}
-
-.teamMems
-{
-   margin: auto;
-   width: 70%;
-   border: 3px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 10px;
-}
-
-.teamMems t
-{
-   margin: auto;
-   border: 2px solid #000000;
-   background: rgba(0, 0, 0, 0.25);
-   padding: 2px;
-   font-weight: bold;
-}
-
-.teamMems p
+.block p
 {
    padding: 2px;
 }
