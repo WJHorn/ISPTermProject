@@ -76,6 +76,7 @@
       Servings: <input type="text" name="servings" placeholder="Enter Servings Eaten"><br><br>
       <input type="submit" name="eat_food" value="Press to Eat Food!"><br>
    </form>
+      <p>Don't see your food item? Store a new food item <a href="enter_food_item.php">here.</a></p>
 
    <!--Here the php logic is used to save the user's food item eaten into the foods_cosumed table-->
    <!--Basically, variables are created from users food and servings entered and saved to foods_consumed-->
