@@ -24,7 +24,7 @@
          <tr>
             <th> Age: </th>
             <th> Gender: </th>
-            <th> Height: </th>
+            <th> Height(in inches): </th>
             <th> Weight: </th>
             <th> Activity Level (in Days/Week): </th>
          </tr>
@@ -36,7 +36,7 @@
                <input type = "radio" name = "gender" id = "genderF" value = "2" >F
                </p>
             </td>
-            <td><input type = "number" id = "height" value = "6.0" ></td>
+            <td><input type = "number" id = "height" value = "72" ></td>
             <td><input type = "number" id = "weight" value = "200" ></td>
             <td>
                <p>
@@ -62,11 +62,11 @@
    <form method = "post" action = "http://localhost/isp/prj/macros.php">
       <div class = "macros">
          <br>
-         <p>Net Carbs Needed:</p>
+         <p>Grams of Net Carbs Needed:</p>
          <input type = "text" name = "netCarbs" id = "netCarbs"></input>
-         <p>Total Fats Needed:</p>
+         <p>Grams of Fats Needed:</p>
          <input type = "text" name = "fats" id = "fats"></input>
-         <p>Total Protein Needed:</p>
+         <p>Grams of Protein Needed:</p>
          <input type = "text" name = "proteins" id = "proteins"></input>
          <br><br><input type = "submit" value = "Save Macros"></input>
       </div>
@@ -108,8 +108,8 @@
          }
          var FinalCals = Bmr * activity;
          var carbs = 0.05 * FinalCals;
-         var fat = 0.25 * FinalCals;
-         var protein = 0.7 * FinalCals;
+         var fat = 0.7 * FinalCals;
+         var protein = 0.25 * FinalCals;
          
          var FinalCarbs = parseInt(carbs / 4);
          var FinalFats = parseInt(fat / 9);
