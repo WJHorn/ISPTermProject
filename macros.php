@@ -2,9 +2,6 @@
 <html>
 <head>
    <title> Keto Tracker </title>
-   <style type = "text/css">
-   td, th, table {border: thin solid black}
-   </style>
    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <header>
@@ -19,7 +16,10 @@
 </header>
 <body>
    <div class = "input">
-   <h2> Calculate my Macros </h2>
+   <div class = "block">
+      <h2> Calculate my Macros </h2>
+   </div>
+   <div class = "container">
       <table>
          <tr>
             <th> Age: </th>
@@ -29,15 +29,15 @@
             <th> Activity Level (in Days/Week): </th>
          </tr>
          <tr>
-            <td><input type = "number" id = "age" value = "24"></td>
+            <td><input type = "number" id = "age" placeholder = "24"></td>
             <td>
                <p>
                <input type = "radio" name = "gender" id = "genderM" value = "1" checked = "checked" >M
                <input type = "radio" name = "gender" id = "genderF" value = "2" >F
                </p>
             </td>
-            <td><input type = "number" id = "height" value = "72" ></td>
-            <td><input type = "number" id = "weight" value = "200" ></td>
+            <td><input type = "number" id = "height" placeholder = "72" ></td>
+            <td><input type = "number" id = "weight" placeholder = "200" ></td>
             <td>
                <p>
                <input type = "radio" name = "activity" id = "activity1" value = "1.2" checked = "checked" >0
@@ -49,25 +49,28 @@
          </tr>
          <tr>
             <td colspan = "5" align = "center">
-               <button onclick="macroCalc()">Calculate my Macros</button>
+               <button class = "button" onclick="macroCalc()">Calculate my Macros</button>
             </td>
          </tr>
       </table>
    </div>
-   <div class = "macro">
-      <p> Total Calories Needed: </p>
-      <input type = "text" id = "finalCals"></input>
-   
-   <form method = "post" action = "http://localhost/isp/prj/macros.php">
-      <br>
-      <p>Grams of Net Carbs Needed:</p>
-      <input type = "text" name = "netCarbs" id = "netCarbs"></input>
-      <p>Grams of Fats Needed:</p>
-      <input type = "text" name = "fats" id = "fats"></input>
-      <p>Grams of Protein Needed:</p>
-      <input type = "text" name = "proteins" id = "proteins"></input>
+   <div class = "container">
+      <div class = "macro">
+         <h3>Calculated Macros</h3>
+         <p> Total Calories Needed: </p>
+         <input type = "text" id = "finalCals"></input>
+      
+      <form method = "post" action = "http://localhost/isp/prj/macros.php">
+         <br>
+         <p>Grams of Net Carbs Needed:</p>
+         <input type = "text" name = "netCarbs" id = "netCarbs"></input>
+         <p>Grams of Fats Needed:</p>
+         <input type = "text" name = "fats" id = "fats"></input>
+         <p>Grams of Protein Needed:</p>
+         <input type = "text" name = "proteins" id = "proteins"></input>
+         <br><br><input class = "button" type = "submit" value = "Save Macros"></input>
+      </div>
    </div>
-   <br><input class = "button" type = "submit" value = "Save Macros"></input>
    </form>
    <script type = "text/javascript">
       function macroCalc(){

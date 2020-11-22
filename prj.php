@@ -32,6 +32,7 @@
    ?>
 
    <!--Section allows user to enter foods they ate-->
+   <br>
    <div class = "block">
       <h2>Keto Macro Tracker</h2>
       <h4>Enter Food to Eat</h4>
@@ -75,7 +76,7 @@
    
          <!--Here the user enters how many servings of a food they ate-->
          Servings: <input type="text" name="servings" placeholder="Enter Servings Eaten"><br><br>
-         <input type="submit" name="eat_food" value="Press to Eat Food!"><br>
+         <input class = "button" type="submit" name="eat_food" value="Press to Eat Food!"><br>
       </form>
       <p>Don't see your food item? Store a new food item <a href="enter_food_item.php">here.</a></p>
    </div>
@@ -169,6 +170,7 @@
          Net Carbs:<br><input type="text" id = "carbG" name="net_carbs" value="<?php echo $goal_carbs ?? "0"?>"><br>
          Fat Consumed:<br><input type="text" id = "fatG" name="fat" value="<?php echo $goal_fat ?? "0"?>"><br>
          Protein Consumed:<br><input type="text" id = "protG" name="protein" value="<?php echo $goal_protein ?? "0"?>"><br><br>
+         <button class = "button" onclick="document.location='display_food_log.php'">Review Today's Food Log</button>
       </div>
       <div class = "macro">
          <!--Here today's macros will be displayed-->
@@ -203,8 +205,6 @@
       </div>
       <div class = "clear"></div>
    </div>
-   <br>
-   <button class = "button" onclick="document.location='display_food_log.php'">Review Today's Food Log</button>
 </body>
 </html>
 

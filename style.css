@@ -32,14 +32,14 @@
 	display: block;
 	color: white;
 	padding: 15px 20px;
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: Georgia, serif;
 	font-size: 20px;
 	text-decoration: none;
 }
 
 .menu li a:hover
 {
-	background: rgba(130, 22, 237, 0.5);
+	background: rgba(234, 102, 20, 0.5);
 }
 
 .container
@@ -63,6 +63,11 @@
    display: inline-block;
 }
 
+.macro h3
+{
+   color: rgb(234, 102, 20);
+}
+
 .button
 {
    background-color: #000000;
@@ -71,9 +76,15 @@
    text-align: center;
    display: block;
    margin: auto;
-   width: 30%;
+   width: auto;
    font-size: 16px;
    cursor: pointer;
+   border-radius: 8px;
+}
+
+.button:hover
+{
+	background: rgb(234, 102, 20);
 }
 
 .input table
@@ -81,6 +92,12 @@
    padding: 10px;
    background: rgba(0, 0, 0, 0.5);
    color: white;
+   border: 3px solid #000000;
+}
+
+.input p
+{
+   text-align: center;
 }
 
 .descript
@@ -102,6 +119,11 @@
    padding: 10px;
 }
 
+.block h2
+{
+   color: rgb(234, 102, 20);
+}
+
 .block t
 {
    margin: auto;
@@ -109,6 +131,7 @@
    background: rgba(0, 0, 0, 0.25);
    padding: 2px;
    font-weight: bold;
+   color: rgb(234, 102, 20);
 }
 
 .block p
@@ -118,7 +141,7 @@
 
 body
 {
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: Georgia, serif;
    color: black;
 	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("background.jpg");
 	height: 100vh;
