@@ -32,52 +32,53 @@
    ?>
 
    <!--Section allows user to enter foods they ate-->
-   <h2>Keto Macro Tracker</h2>
-   <h4>Enter Food to Eat</h4>
-
-   <!--Create a form to allow users to log a food item they ate-->
-   <form method="post" action="prj.php">
-      Categories:
+   <div class = "block">
+      <h2>Keto Macro Tracker</h2>
+      <h4>Enter Food to Eat</h4>
+      
+      <!--Create a form to allow users to log a food item they ate-->
+      <form method="post" action="prj.php">
+         Categories:
+      
+         <!--When they change the category, reload the page-->
+         <select name="categories" onchange='this.form.submit()'>
+         <option value='choose'>Choose food category</option>
    
-      <!--When they change the category, reload the page-->
-      <select name="categories" onchange='this.form.submit()'>
-      <option value='choose'>Choose food category</option>
-
-      <?php
-         //Populate the foods selectbox with all the foods from foods_database of a given category
-         while($rows = $resultSet->fetch_assoc())
-         {
-            $category = $rows['category'];
-            echo "<option value='$category'>$category</option>";
-         }
-      ?>
-      </select>
-      <noscript><input type="submit" value="Submit"></noscript>
-   </form>
-
-   <!--Create a new form so that after they have selected a food category, they can choose a food item-->
-   <form method="post" enctype="multipart/form-data">
-      Foods:
-      <select name="foods">
-      <?php
-         $selectOption = $_POST['categories'];
-         $resultSet2 = $mysqli->query("SELECT food_name, serving_size FROM foods_database WHERE category='$selectOption'");
-         while($rows = $resultSet2->fetch_assoc())
-         {
-            $food_name = $rows['food_name'];
-            $serving_size = $rows['serving_size'];
-            echo "<option value='$food_name'>$food_name, $serving_size</option>";
-         }
-      ?>
-      </select>
-      <br><br>
-
-      <!--Here the user enters how many servings of a food they ate-->
-      Servings: <input type="text" name="servings" placeholder="Enter Servings Eaten"><br><br>
-      <input type="submit" name="eat_food" value="Press to Eat Food!"><br>
-   </form>
+         <?php
+            //Populate the foods selectbox with all the foods from foods_database of a given category
+            while($rows = $resultSet->fetch_assoc())
+            {
+               $category = $rows['category'];
+               echo "<option value='$category'>$category</option>";
+            }
+         ?>
+         </select>
+         <noscript><input type="submit" value="Submit"></noscript>
+      </form>
+   
+      <!--Create a new form so that after they have selected a food category, they can choose a food item-->
+      <form method="post" enctype="multipart/form-data">
+         Foods:
+         <select name="foods">
+         <?php
+            $selectOption = $_POST['categories'];
+            $resultSet2 = $mysqli->query("SELECT food_name, serving_size FROM foods_database WHERE category='$selectOption'");
+            while($rows = $resultSet2->fetch_assoc())
+            {
+               $food_name = $rows['food_name'];
+               $serving_size = $rows['serving_size'];
+               echo "<option value='$food_name'>$food_name, $serving_size</option>";
+            }
+         ?>
+         </select>
+         <br><br>
+   
+         <!--Here the user enters how many servings of a food they ate-->
+         Servings: <input type="text" name="servings" placeholder="Enter Servings Eaten"><br><br>
+         <input type="submit" name="eat_food" value="Press to Eat Food!"><br>
+      </form>
       <p>Don't see your food item? Store a new food item <a href="enter_food_item.php">here.</a></p>
-
+   </div>
    <!--Here the php logic is used to save the user's food item eaten into the foods_cosumed table-->
    <!--Basically, variables are created from users food and servings entered and saved to foods_consumed-->
    <?php
@@ -101,38 +102,109 @@
    <?php //I just wanted to hang onto this datetime format
       //$dt = new DateTime();
       //echo $dt->format('Y-m-d H:i:s');
-   ?><br>
-
-   <!--Here today's macros will be displayed-->
-   <!--Javascript will be used to display today's date-->
-   <h2>Today's Macro Tracker</h2><br>
-   Date:<script> var today = new Date();
-   var dd = String(today.getDate()).padStart(2, '0');
-   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-   var yyyy = today.getFullYear(); 
-   
-   today = mm + '/' + dd + '/' + yyyy;
-   document.write(today);</script><br><br>
-   
-   <?php
-      //Create PHP variables with MySQL queries to get today_carbs, today_fat, and today_protein from foods_consumed db
-      $grabquery2 = $mysqli->query("SELECT sum(net_carbs) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
-      $row2=mysqli_fetch_row($grabquery2);
-      $today_carbs=$row2[0];
-      $grabquery3 = $mysqli->query("SELECT sum(fat) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
-      $row3=mysqli_fetch_row($grabquery3);
-      $today_fat=$row3[0];
-      $grabquery4 = $mysqli->query("SELECT sum(protein) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
-      $row4=mysqli_fetch_row($grabquery4);
-      $today_protein=$row4[0];
    ?>
-
-   <!--Display output of PHP variables to show carbs, fat, and protein for the day-->
-   Net Carbs: <input type="text" name="net_carbs" value="<?php echo $today_carbs ?>"><br><br>
-   Fat Consumed:<input type="text" name="fat" value="<?php echo $today_fat ?>"><br><br>
-   Protein Consumed:<input type="text" name="protein" value="<?php echo $today_protein ?>"><br><br>
-   <button onclick="document.location='display_food_log.php'">Review Today's Food Log</button>
-
+   <div class = "container">
+      <div class = "macro">
+         <!--Here today's macros will be displayed-->
+         <!--Javascript will be used to display today's date-->
+         <h3>Today's Macro Tracker</h3><br>
+         Date:
+         <script> 
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear(); 
+            
+            today = mm + '/' + dd + '/' + yyyy;
+            document.write(today);
+         </script><br><br>
+         
+         <?php
+            //Create PHP variables with MySQL queries to get today_carbs, today_fat, and today_protein from foods_consumed db
+            $grabquery2 = $mysqli->query("SELECT sum(net_carbs) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
+            $row2=mysqli_fetch_row($grabquery2);
+            $today_carbs=$row2[0];
+            $grabquery3 = $mysqli->query("SELECT sum(fat) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
+            $row3=mysqli_fetch_row($grabquery3);
+            $today_fat=$row3[0];
+            $grabquery4 = $mysqli->query("SELECT sum(protein) as today_carbs FROM foods_consumed WHERE day(time_consumed)=day(now())");
+            $row4=mysqli_fetch_row($grabquery4);
+            $today_protein=$row4[0];
+         ?>
+         
+         <!--Display output of PHP variables to show carbs, fat, and protein for the day-->
+         Net Carbs:<br><input type="text" id = "carbT" name="net_carbs" value="<?php echo $today_carbs ?>"><br>
+         Fat Consumed:<br><input type="text" id = "fatT" name="fat" value="<?php echo $today_fat ?>"><br>
+         Protein Consumed:<br><input type="text" id = "protT" name="protein" value="<?php echo $today_protein ?>"><br><br>
+      </div>
+      <div class = "macro">
+         <!--Here goal macros will be displayed-->
+         <!--Javascript will be used to display today's date-->
+         <h3>Goal Macros</h3><br>
+         Date:
+         <script> 
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear(); 
+            
+            today = mm + '/' + dd + '/' + yyyy;
+            document.write(today);
+         </script><br><br>
+         
+         <?php
+            //Create PHP variables with MySQL queries to get goal_carbs, goal_fat, and goal_protein from macroVars
+            $grabquery2 = $mysqli->query("SELECT NetCarbs FROM macroVars ORDER BY primary_key DESC LIMIT 1");
+            $row2=mysqli_fetch_row($grabquery2);
+            $goal_carbs=$row2[0];
+            $grabquery3 = $mysqli->query("SELECT Fats FROM macroVars ORDER BY primary_key DESC LIMIT 1");
+            $row3=mysqli_fetch_row($grabquery3);
+            $goal_fat=$row3[0];
+            $grabquery4 = $mysqli->query("SELECT Proteins FROM macroVars ORDER BY primary_key DESC LIMIT 1");
+            $row4=mysqli_fetch_row($grabquery4);
+            $goal_protein=$row4[0];
+         ?>
+         
+         <!--Display output of PHP variables to show goal carbs, fat, and protein -->
+         Net Carbs:<br><input type="text" id = "carbG" name="net_carbs" value="<?php echo $goal_carbs ?? "0"?>"><br>
+         Fat Consumed:<br><input type="text" id = "fatG" name="fat" value="<?php echo $goal_fat ?? "0"?>"><br>
+         Protein Consumed:<br><input type="text" id = "protG" name="protein" value="<?php echo $goal_protein ?? "0"?>"><br><br>
+      </div>
+      <div class = "macro">
+         <!--Here today's macros will be displayed-->
+         <!--Javascript will be used to display today's date-->
+         <h3>Remaining Macros</h3><br>
+         Date:
+         <script> 
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear(); 
+            
+            today = mm + '/' + dd + '/' + yyyy;
+            document.write(today);
+         </script><br><br>
+         
+         <!--Display output of javascript calculation to show carbs, fat, and protein for the day-->
+         Net Carbs:<br><input type="text" id = "carbS" name="net_carbs"><br>
+         Fat Consumed:<br><input type="text" id = "fatS" name="fat"></br>
+         Protein Consumed:<br><input type="text" id = "protS" name="protein"><br><br>
+         
+         <script>
+            var finalCarbs = (document.getElementById("carbG").value - document.getElementById("carbT").value);
+            var finalFats = (document.getElementById("fatG").value - document.getElementById("fatT").value);
+            var finalProteins = (document.getElementById("protG").value - document.getElementById("protT").value);
+            
+            document.getElementById("carbS").value = finalCarbs;
+            document.getElementById("fatS").value = finalFats;
+            document.getElementById("protS").value = finalProteins;
+         </script>
+         
+      </div>
+      <div class = "clear"></div>
+   </div>
+   <br>
+   <button class = "button" onclick="document.location='display_food_log.php'">Review Today's Food Log</button>
 </body>
 </html>
 

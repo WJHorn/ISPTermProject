@@ -18,8 +18,8 @@
 	</div>
 </header>
 <body>
-   <h2> Calculate my Macros </h2>
    <div class = "input">
+   <h2> Calculate my Macros </h2>
       <table>
          <tr>
             <th> Age: </th>
@@ -54,22 +54,20 @@
          </tr>
       </table>
    </div>
-   <div class = "totalCals">
-      <br>
+   <div class = "macro">
       <p> Total Calories Needed: </p>
       <input type = "text" id = "finalCals"></input>
-   </div>
+   
    <form method = "post" action = "http://localhost/isp/prj/macros.php">
-      <div class = "macros">
-         <br>
-         <p>Grams of Net Carbs Needed:</p>
-         <input type = "text" name = "netCarbs" id = "netCarbs"></input>
-         <p>Grams of Fats Needed:</p>
-         <input type = "text" name = "fats" id = "fats"></input>
-         <p>Grams of Protein Needed:</p>
-         <input type = "text" name = "proteins" id = "proteins"></input>
-         <br><br><input type = "submit" value = "Save Macros"></input>
-      </div>
+      <br>
+      <p>Grams of Net Carbs Needed:</p>
+      <input type = "text" name = "netCarbs" id = "netCarbs"></input>
+      <p>Grams of Fats Needed:</p>
+      <input type = "text" name = "fats" id = "fats"></input>
+      <p>Grams of Protein Needed:</p>
+      <input type = "text" name = "proteins" id = "proteins"></input>
+   </div>
+   <br><input class = "button" type = "submit" value = "Save Macros"></input>
    </form>
    <script type = "text/javascript">
       function macroCalc(){
