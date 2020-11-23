@@ -85,6 +85,7 @@
 .button:hover
 {
 	background: rgb(234, 102, 20);
+   cursor: pointer;
 }
 
 .input table
@@ -139,6 +140,14 @@
    padding: 2px;
 }
 
+.video 
+{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border: 2px solid #000000;
+}
+
 body
 {
 	font-family: Georgia, serif;
@@ -148,7 +157,6 @@ body
 	background-size: initial;
    background-repeat: repeat;
 	background-position: left;
-	cursor: pointer;
 }
 
 footer

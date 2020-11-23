@@ -105,7 +105,7 @@
             Bmr = 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
          }
          else {
-            Bmr = 65 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
+            Bmr = 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
          }
          var FinalCals = Bmr * activity;
          var carbs = 0.05 * FinalCals;
