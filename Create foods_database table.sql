@@ -59,9 +59,3 @@ INSERT INTO foods_database VALUES
 ('42', 'Eggs', 'Proteins', '0.4', '4.8', '6', '1 egg'),
 ('43', 'Pork', 'Proteins', '0', '16', '30', '4 oz'),
 ('44', 'Turkey Breast', 'Proteins', '0.2', '1.7', '27', '1 tbsp');
-
-
-
-
-
-
